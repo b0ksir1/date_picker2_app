@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
       if (!_isRunning) {
         timer.cancel();
       }
-      _checkAlarm();
+      _checkColor();
     });
   }
 
@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
     return chosenDateTime;
   }
 
-  _checkAlarm(){
+  _checkColor(){
    if (_isFlashing) {
       setState(() {
         if (_backgroundColor == Colors.yellow) {
