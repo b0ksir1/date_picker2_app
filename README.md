@@ -1,16 +1,5 @@
 # date_picker2_app
 
-A new Flutter project.
+Date_picker_2에 현재 시간과 선택 시간이 일치할 경우 노란색/핑크색으로 배경 색깔이 깜빡이는 기능을 추가
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+사용한 함수가 너무 많아 우선 업로드 후 코드를 간소화할 방법을 찾는 중입니다.
