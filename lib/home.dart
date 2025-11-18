@@ -35,23 +35,24 @@ class _HomeState extends State<Home> {
       _addItem();
     });
   Timer.periodic(Duration(milliseconds: 500), (timer) {
-      if (!_isRunning) {
+      if(!_isRunning) {
         timer.cancel();
       }
-      if (_isFlashing) {
-      setState(() {
-        if (_backgroundColor == Colors.yellow) {
+      if(_isFlashing) {
+      
+        if(_backgroundColor == Colors.yellow) {
           _backgroundColor = Colors.pink;
-        } else {
+        }else{
           _backgroundColor = Colors.yellow;
         }
-      });
-    } else {
-      if (_backgroundColor != Colors.white) {
+      
+        }else{
+        
+          if(_backgroundColor != Colors.white) {
           _backgroundColor = Colors.white;
         setState(() {});
+        }
       }
-    }
     });
   }
 
@@ -60,17 +61,17 @@ class _HomeState extends State<Home> {
     DateTime now = DateTime.now();
     currentDateTime = (
       "${now.year}-${now.month.toString().padLeft(2,"0")}-${now.day.toString().padLeft(2,"0")} ${_weekdayToString(now.weekday)} ${now.hour.toString().padLeft(2,"0")}:${now.minute.toString().padLeft(2,"0")}:${now.second.toString().padLeft(2,"0")}");
-    if (chosenDateTime != null) {
-      if (now.year == chosenDateTime!.year &&
+    if(chosenDateTime != null) {
+      if(now.year == chosenDateTime!.year &&
           now.month == chosenDateTime!.month &&
           now.day == chosenDateTime!.day &&
           now.hour == chosenDateTime!.hour &&
           now.minute == chosenDateTime!.minute) {
         _isFlashing = true;
-      } else {
+      }else{
         _isFlashing = false;
       }
-    } else {
+      }else{
       _isFlashing = false;
     }
     setState(() {});
