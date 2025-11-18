@@ -38,7 +38,20 @@ class _HomeState extends State<Home> {
       if (!_isRunning) {
         timer.cancel();
       }
-      _checkColor();
+      if (_isFlashing) {
+      setState(() {
+        if (_backgroundColor == Colors.yellow) {
+          _backgroundColor = Colors.pink;
+        } else {
+          _backgroundColor = Colors.yellow;
+        }
+      });
+    } else {
+      if (_backgroundColor != Colors.white) {
+          _backgroundColor = Colors.white;
+        setState(() {});
+      }
+    }
     });
   }
 
@@ -47,7 +60,19 @@ class _HomeState extends State<Home> {
     DateTime now = DateTime.now();
     currentDateTime = (
       "${now.year}-${now.month.toString().padLeft(2,"0")}-${now.day.toString().padLeft(2,"0")} ${_weekdayToString(now.weekday)} ${now.hour.toString().padLeft(2,"0")}:${now.minute.toString().padLeft(2,"0")}:${now.second.toString().padLeft(2,"0")}");
-    _checkTime(now);
+    if (chosenDateTime != null) {
+      if (now.year == chosenDateTime!.year &&
+          now.month == chosenDateTime!.month &&
+          now.day == chosenDateTime!.day &&
+          now.hour == chosenDateTime!.hour &&
+          now.minute == chosenDateTime!.minute) {
+        _isFlashing = true;
+      } else {
+        _isFlashing = false;
+      }
+    } else {
+      _isFlashing = false;
+    }
     setState(() {});
   }
 
@@ -115,43 +140,4 @@ class _HomeState extends State<Home> {
     String chosenDateTime = "${now.year}-${now.month.toString().padLeft(2,"0")}-${now.day.toString().padLeft(2,"0")} ${_weekdayToString(now.weekday)} ${now.hour.toString().padLeft(2,"0")}:${now.minute.toString().padLeft(2,"0")}";
     return chosenDateTime;
   }
-
-  _checkColor(){
-   if (_isFlashing) {
-      setState(() {
-        if (_backgroundColor == Colors.yellow) {
-          _backgroundColor = Colors.pink;
-        } else {
-          _backgroundColor = Colors.yellow;
-        }
-      });
-    } else {
-      if (_backgroundColor != Colors.white) {
-          _backgroundColor = Colors.white;
-        setState(() {});
-      }
-    }
-  }
-
- _checkTime(DateTime now) {
-    
-    
-    if (chosenDateTime != null) {
-      if (now.year == chosenDateTime!.year &&
-          now.month == chosenDateTime!.month &&
-          now.day == chosenDateTime!.day &&
-          now.hour == chosenDateTime!.hour &&
-          now.minute == chosenDateTime!.minute) {
-        _isFlashing = true;
-      } else {
-        _isFlashing = false;
-      }
-    } else {
-      _isFlashing = false;
-    }
-  }
-
-
-
-
 } // class
